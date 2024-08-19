@@ -32,15 +32,15 @@ async function removeFlutterPackage(packageName: string): Promise<void> {
     const hasDevDependency = checkDependencies(pubspecYaml['dev_dependencies'], packageName);
 
     if (hasDependency || hasDevDependency) {
-        console.log(`Removing ${packageName}...`);
+        // console.log(`Removing ${packageName}...`);
         const result = await execCommand(`flutter pub remove ${packageName}`);
         if (result.stderr) {
-            console.error(`Error removing package: ${result.stderr}`);
+            // console.error(`Error removing package: ${result.stderr}`);
         } else {
-            console.log(`${packageName} removed successfully.`);
+            // console.log(`${packageName} removed successfully.`);
         }
     } else {
-        console.log(`Package '${packageName}' not found in pubspec.yaml.`);
+        // console.log(`Package '${packageName}' not found in pubspec.yaml.`);
     }
 }
 
@@ -93,10 +93,10 @@ async function addFlutterPackage(
 
         // 버전이 없거나 dev가 포함되지 않은 경우 버전 제거
         if (!version || version === '' || !version.includes('dev')) {
-            await removePackageVersion(pubspecFilePath, packageName);
+            // await removePackageVersion(pubspecFilePath, packageName);
         }
 
-        console.log(`Installed ${packageName} in ${devPackage ? 'dev_dependencies' : 'dependencies'}.`);
+        // console.log(`Installed ${packageName} in ${devPackage ? 'dev_dependencies' : 'dependencies'}.`);
 
     } catch (error) {
         console.error('Failed to add package:', error);
@@ -107,11 +107,11 @@ async function addFlutterPackage(
     return false;
 }
 
-async function removePackageVersion(pubspecFilePath: string, packageName: string) {
-    // 이 함수는 pubspec.yaml에서 특정 패키지의 버전을 제거하는 로직이 구현될 수 있습니다.
-    // 임시 구현으로, 실제로는 pubspec.yaml을 다시 작성해야 합니다.
-    console.log(`Removed version for ${packageName} in ${pubspecFilePath}`);
-}
+// async function removePackageVersion(pubspecFilePath: string, packageName: string) {
+//     // 이 함수는 pubspec.yaml에서 특정 패키지의 버전을 제거하는 로직이 구현될 수 있습니다.
+//     // 임시 구현으로, 실제로는 pubspec.yaml을 다시 작성해야 합니다.
+//     // console.log(`Removed version for ${packageName} in ${pubspecFilePath}`);
+// }
 
 // 명령 실행을 비동기 처리하는 함수
 function execCommand(command: string): Promise<{ stdout: string, stderr: string }> {
@@ -146,7 +146,7 @@ async function addAllModules(): Promise<void> {
     // 각 패키지에 대해 처리합니다.
     for (const packageName of allPackages) {
 
-        console.log(`Adding ${packageName}...`);
+        // console.log(`Adding ${packageName}...`);
 
         // 해당 패키지의 버전을 가져옵니다.
         const packageInfo = await getPackageInfoUsingName(packageName);
@@ -154,7 +154,7 @@ async function addAllModules(): Promise<void> {
             continue;
         }
 
-        console.log(packageInfo);
+        // console.log(packageInfo);
 
         // // 해당 패키지의 경로를 가져옵니다.
         const packagePath = getPackagePath(packageInfo.Name, packageInfo.Version);
@@ -166,7 +166,7 @@ async function addAllModules(): Promise<void> {
             continue;
         }
 
-        console.log(packagePath);
+        // console.log(packagePath);
 
         // // 패키지 경로를 이용해 추가 작업을 수행합니다.
         await addPackageCodeUsingPath(packagePath, packageInfo);
@@ -194,7 +194,7 @@ async function checkUihubTopicInPubspec(packagePath: string): Promise<boolean> {
 
         return false;
     } catch (error) {
-        console.error('Error reading pubspec.yaml or parsing topics:', error);
+        // console.error('Error reading pubspec.yaml or parsing topics:', error);
         return false;
     }
 }
@@ -327,24 +327,24 @@ async function addAssetPaths(newPaths: string[]): Promise<void> {
                 // 경로가 존재하지 않는 경우 추가
                 if (!pathExists && assetsIndex !== -1) {
                     lines.splice(assetsIndex + 1, 0, `    - ${newPath}`);
-                    console.log(`Added asset path: ${newPath}`);
+                    // console.log(`Added asset path: ${newPath}`);
                 } else if (pathExists) {
-                    console.log(`Asset path already exists and was not added: ${newPath}`);
+                    // console.log(`Asset path already exists and was not added: ${newPath}`);
                 }
             }
 
             // 파일 쓰기
             if (newPaths.length > 0) {
                 fs.writeFileSync(filePath, lines.join(os.EOL), 'utf8');
-                console.log('Asset paths processing completed.');
+                // console.log('Asset paths processing completed.');
             } else if (assetsIndex === -1) {
-                console.log('No new asset paths to add and no existing "assets:" section to update.');
+                // console.log('No new asset paths to add and no existing "assets:" section to update.');
             }
         } else {
-            console.error('Flutter section not found in pubspec.yaml');
+            // console.error('Flutter section not found in pubspec.yaml');
         }
     } catch (error) {
-        console.error('Error processing pubspec.yaml:', error);
+        // console.error('Error processing pubspec.yaml:', error);
     }
 }
 
@@ -418,6 +418,11 @@ function getPackagePath(packageName: string, packageVersion: string): string | n
         ? process.env['LOCALAPPDATA'] // Windows의 경우 LOCALAPPDATA 사용
         : process.env['HOME'] || process.env['USERPROFILE']; // Mac/Linux의 경우 HOME 또는 USERPROFILE 사용
 
+    // 현재 위치 출력
+    // console.log(`Current directory: ${process.cwd()}`);
+    // 아니 이거 말고 이 npm의 위치
+    // console.log(`Current directory: ${process.execPath}`);
+
     if (!homePath) {
         console.error('Cannot find user home directory');
         return null;
@@ -440,7 +445,7 @@ function getPackagePath(packageName: string, packageVersion: string): string | n
     }
 
     if (!packageHostedPath) {
-        console.error('No valid .pub-cache hosted path found');
+        // console.error('No valid .pub-cache hosted path found');
         return null;
     }
 
