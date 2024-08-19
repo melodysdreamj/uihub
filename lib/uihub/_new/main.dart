@@ -11,6 +11,7 @@ class _NewViewState extends State<NewView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
       body: Center(child: Text("New View")),
     );
   }
@@ -18,6 +19,7 @@ class _NewViewState extends State<NewView> {
 
 main() async {
   return runApp(MaterialApp(
-    home: NewView(),
+    home: Scaffold(
+        body: NewView()),
   ));
 }
