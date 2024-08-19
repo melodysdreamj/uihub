@@ -1,0 +1,25 @@
+{
+  "name": "uihub-cli",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "bin": {
+    "uihub": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "js-yaml": "^4.1.0",
+    "typescript": "^5.5.4"
+  },
+  "description": "",
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.4.1",
+    "typescript": "^5.5.4"
+  }
+}
