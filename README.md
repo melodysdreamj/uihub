@@ -1,3 +1,5 @@
+[![pub package](https://img.shields.io/pub/v/NewUI.svg)](https://pub.dartlang.org/packages/NewUI)
+
 # NewUI
 
 [//]: # ([![YouTube Video Title]&#40;https://img.youtube.com/vi/[video-id]/0.jpg&#41;]&#40;https://www.youtube.com/watch?v=[video-id]&#41;)
