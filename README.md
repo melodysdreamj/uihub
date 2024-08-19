@@ -8,7 +8,7 @@
 
 1. To add UI to your project, enter the following command in the terminal at the root of your flutter project:
    ```bash
-   npm i -g uihub-cli
+   npm install -g uihub-cli@latest
    uihub get NewUI
    ```
 2. run the following command to run the UI: 
