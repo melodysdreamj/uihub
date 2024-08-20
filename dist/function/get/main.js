@@ -222,10 +222,20 @@ function copyDirectory(sourceDir, targetDir) {
     return __awaiter(this, void 0, void 0, function* () {
         let filesCopied = false; // 파일이 복사되었는지 여부를 추적
         try {
-            // 타겟 디렉터리가 존재하지 않으면 생성
-            fs_1.default.mkdirSync(targetDir, { recursive: true });
+            // 소스 디렉터리가 존재하는지 확인
+            if (!fs_1.default.existsSync(sourceDir)) {
+                // console.log(`Source directory ${sourceDir} does not exist. Skipping...`);
+                return filesCopied;
+            }
             // withFileTypes 옵션을 사용하여 디렉토리 항목 읽기
             const entries = fs_1.default.readdirSync(sourceDir, { withFileTypes: true });
+            // 소스 디렉토리에 파일이나 디렉터리가 없는 경우 넘어감
+            if (entries.length === 0) {
+                // console.log(`Source directory ${sourceDir} is empty. Skipping...`);
+                return filesCopied;
+            }
+            // 타겟 디렉터리가 존재하지 않으면 생성
+            fs_1.default.mkdirSync(targetDir, { recursive: true });
             for (const entry of entries) {
                 const sourcePath = path_1.default.join(sourceDir, entry.name);
                 const targetPath = path_1.default.join(targetDir, entry.name);
