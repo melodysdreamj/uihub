@@ -23,7 +23,7 @@ program
     .description('Create a new ui')
     .action((name) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield (0, main_1.createUI)(`${name}_ui`); // 비동기 함수 호출
+        yield (0, main_1.createUI)(`uihub_${name}`); // 비동기 함수 호출
     }
     catch (error) {
         console.error(`Error: ${error}`);
