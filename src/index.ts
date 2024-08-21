@@ -4,10 +4,6 @@ import { Command } from 'commander';
 import {createUI} from "./function/create/main";
 import {getUI} from "./function/get/main";
 
-
-
-
-
 const program = new Command();
 
 program
@@ -20,7 +16,7 @@ program
     .description('Create a new ui')
     .action(async (name: string) => {
         try {
-            await createUI(`${name}_ui`); // 비동기 함수 호출
+            await createUI(`uihub_${name}`); // 비동기 함수 호출
         } catch (error) {
             console.error(`Error: ${error}`);
         }
