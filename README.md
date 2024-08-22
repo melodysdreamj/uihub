@@ -2,7 +2,7 @@
 
 # NewUI
 
-[//]: # ([![YouTube Video Title]&#40;https://img.youtube.com/vi/[video-id]/0.jpg&#41;]&#40;https://www.youtube.com/watch?v=[video-id]&#41;)
+[![YouTube Video Title](https://img.youtube.com/vi/[video-id]/0.jpg)](https://www.youtube.com/shorts/[video-id])
 
 
 
