@@ -2,6 +2,7 @@
 [![pub package](https://img.shields.io/pub/v/NewUI.svg)](https://pub.dartlang.org/packages/NewUI)
 
 # NewUI
+[![UI Hub](https://img.shields.io/badge/UI%20HUB-VISIT-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@FreeFlutterUIHub/shorts)
 
 [//]: # ([![YouTube Video Title]&#40;https://img.youtube.com/vi/[video-id]/0.jpg&#41;]&#40;https://www.youtube.com/shorts/[video-id]&#41;)
 
